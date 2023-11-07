@@ -74,10 +74,10 @@ impl LibraryFolders {
                 .filter(|(key, values)| key.parse::<u32>().is_ok() && values.len() == 1)
                 .filter_map(|(_, values)| {
                     let library_folder_string = values
-                        .get(0)?
+                        .first()?
                         .get_obj()?
                         .get("path")?
-                        .get(0)?
+                        .first()?
                         .get_str()?
                         .to_string();
                     let library_folder = PathBuf::from(library_folder_string).join("steamapps");
